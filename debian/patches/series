@@ -1,0 +1,10 @@
+01-builddefs.patch
+02-config.patch
+03-db-doc.patch
+04-alpha.patch
+05-link-local.patch
+06-whitespaces.patch
+07-greedy.patch
+08-utf8.patch
+09-manpage.patch
+10-s390.patch

@@ -1,0 +1,18 @@
+Author: Daniel Baumann <daniel@debian.org>
+Description:
+ Don't define VSF_SYSDEP_HAVE_LINUX_CLONE on alpha to avoid FTBFS
+ (Closes: #540860).
+
+diff -Naurp vsftpd.orig/sysdeputil.c vsftpd/sysdeputil.c
+--- vsftpd.orig/sysdeputil.c	2009-09-20 16:26:21.000000000 +0000
++++ vsftpd/sysdeputil.c	2009-09-20 16:27:13.000000000 +0000
+@@ -67,7 +67,9 @@
+ #if defined(__linux__)
+   #include <errno.h>
+   #include <syscall.h>
++#if !defined(__alpha__)
+   #define VSF_SYSDEP_HAVE_LINUX_CLONE
++#endif
+   #include <sched.h>
+   #ifndef CLONE_NEWPID
+     #define CLONE_NEWPID 0x20000000

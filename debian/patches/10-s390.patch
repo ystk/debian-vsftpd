@@ -1,0 +1,15 @@
+Author: Philipp Kern <pkern@debian.org>
+Description: Fix vsftpd on s390 (Closes: #602726).
+
+diff -Naurp vsftpd.orig/sysdeputil.c vsftpd/sysdeputil.c
+--- vsftpd.orig/sysdeputil.c	2010-03-26 04:25:33.000000000 +0100
++++ vsftpd/sysdeputil.c	2010-11-09 00:56:57.759463692 +0100
+@@ -64,7 +64,7 @@
+ #include <utmpx.h>
+ 
+ /* BEGIN config */
+-#if defined(__linux__)
++#if defined(__linux__) && !defined(__s390__)
+   #include <errno.h>
+   #include <syscall.h>
+   #define VSF_SYSDEP_HAVE_LINUX_CLONE
