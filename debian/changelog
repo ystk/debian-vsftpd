@@ -1,3 +1,14 @@
+vsftpd (2.3.2-3+squeeze2) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Disable network isolation due to a problem with cleaning up network
+    namespaces fast enough in kernels < 2.6.35 (CVE-2011-2189).
+    Thanks Ben Hutchings for the patch!
+  * Fix possible DoS via globa expressions in STAT commands by
+    limiting the matching loop (CVE-2011-0762; Closes: #622741).
+
+ -- Nico Golde <nion@debian.org>  Wed, 07 Sep 2011 20:39:59 +0000
+
 vsftpd (2.3.2-3) unstable; urgency=medium
 
   * Adding patch from Philipp Kern <pkern@debian.org> to fix vsftpd on

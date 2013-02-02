@@ -1,3 +1,5 @@
+CVE-2011-0762.patch
+CVE-2011-2189.patch
 01-builddefs.patch
 02-config.patch
 03-db-doc.patch
