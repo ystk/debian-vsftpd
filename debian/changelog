@@ -1,36 +1,151 @@
+vsftpd (2.3.5-3) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Adding changelog entry from squeeze security update.
+
+  [ Jonathan Nieder ]
+  * Adding NEWS file to warn about strengthened checks for writable root
+    directory inside chroot (Closes: #656900).
+
+  [ Daniel Baumann ]
+  * Manually passing CPPFLAGS into CFLAGS when calling make in rules
+    (Closes: #655103, #657693).
+  * Updating package to standards version 3.9.3.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 04 Mar 2012 20:15:39 +0100
+
+vsftpd (2.3.5-2) unstable; urgency=low
+
+  * Updating build target in rules to actually take up the hardening
+    flags, thanks to Moritz Muehlenhoff <jmm@debian.org> (Closes:
+    #655103).
+  * Updating to debhelper version 9.
+  * Simplifying hardening in rules.
+  * Adding patch from Michael Cree <mcree@orcon.net.nz> to fix FTBFS on
+    alpha (Closes: #656182).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 21 Jan 2012 10:56:03 +0100
+
+vsftpd (2.3.5-1) unstable; urgency=low
+
+  * Merging upstream version 2.3.5.
+  * Rediffing utf8.patch.
+  * Using compression level 9 also for binary packages.
+  * Silencing getent calls in postinst (Closes: #641965).
+  * Adding Dutch debconf translations from Jeroen Schot <schot@a-
+    eskwadraat.nl> (Closes: #654859).
+  * Adding Indonesian debconf translations from Mahyuddin Susanto
+    <udienz@gmail.com> (Closes: #654170).
+  * Enabling hardening build options (Closes: #644295).
+  * Updating years in copyright.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 08 Jan 2012 10:54:36 +0100
+
+vsftpd (2.3.4-1) unstable; urgency=low
+
+  * Merging upstream version 2.3.4:
+  * Updating maintainer and uploaders fields.
+  * Removing vcs fields.
+  * Removing references to my old email address.
+  * Makging packaging distribution neutral.
+  * Updating years in copyright file.
+  * Updating to standards version 3.9.2.
+  * Compacting copyright file.
+  * Updating debconf-po files.
+  * Dropping alpha.patch, not supported anymore.
+  * Renumbering patches.
+  * Rediffing s390.patch.
+  * Simplifying architecture listing for libcap2-dev build-depends,
+    thanks to Robert Millan <rmh@debian.org> (Closes: #634725).
+  * Adding Catalan debconf translations from Innocent De Marchi
+    <tangram.peces@gmail.com> (Closes: #630075).
+  * Adding patch from Ben Hutchings <ben@decadent.org.uk> to fix a
+    remote DoS on Linux 2.6.32 (Closes: #629373).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 05 Sep 2011 15:55:00 +0200
+
+vsftpd (2.3.2-8) experimental; urgency=low
+
+  * Updating rules to only link against libcap on linux, thanks to Pino
+    Toscano <toscano.pino@tiscali.it> (Closes: #607587).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 20 Dec 2010 06:40:40 +0100
+
+vsftpd (2.3.2-7) experimental; urgency=low
+
+  * Improving user checks with getent in postinst scripts, thanks to
+    Scott Moser <smoser@ubuntu.com> (Closes: #607129).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 19 Dec 2010 20:45:15 +0100
+
+vsftpd (2.3.2-6) experimental; urgency=low
+
+  * Adding Danish debconf translations from Joe Dalton
+    <joedalton2@yahoo.dk> (Closes: #605069).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 06 Dec 2010 13:10:42 +0100
+
+vsftpd (2.3.2-5) experimental; urgency=low
+
+  * Correcting email address in previous changelog.
+  * Updating to debhelper version 8.
+  * Switching to source format 3.0 (quilt).
+  * Rediffing s390.patch.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 26 Nov 2010 17:42:55 +0100
+
+vsftpd (2.3.2-4) experimental; urgency=low
+
+  * Making greps for vsftpd username and group in postinst more robust,
+    thanks to Serge Hallyn <serge.hallyn@canonical.com> (Closes:
+    #604888).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 25 Nov 2010 14:56:44 +0100
+
+vsftpd (2.3.2-3+squeeze2) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Disable network isolation due to a problem with cleaning up network
+    namespaces fast enough in kernels < 2.6.35 (CVE-2011-2189).
+    Thanks Ben Hutchings for the patch!
+  * Fix possible DoS via globa expressions in STAT commands by
+    limiting the matching loop (CVE-2011-0762; Closes: #622741).
+
+ -- Nico Golde <nion@debian.org>  Wed, 07 Sep 2011 20:39:59 +0000
+
 vsftpd (2.3.2-3) unstable; urgency=medium
 
   * Adding patch from Philipp Kern <pkern@debian.org> to fix vsftpd on
     s390 (Closes: #602726).
 
- -- Daniel Baumann <daniel@debian.org>  Tue, 09 Nov 2010 01:00:27 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 09 Nov 2010 01:00:27 +0100
 
 vsftpd (2.3.2-2) experimental; urgency=low
 
   * Adding Brazilian Portuguese debconf translations from Chanely
     Marques <chanelym@gmail.com> (Closes: #595658).
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 05 Sep 2010 21:18:38 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 05 Sep 2010 21:18:38 +0200
 
 vsftpd (2.3.2-1) experimental; urgency=low
 
   * Merging upstream version 2.3.2.
 
- -- Daniel Baumann <daniel@debian.org>  Wed, 01 Sep 2010 14:34:05 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 01 Sep 2010 14:34:05 +0200
 
 vsftpd (2.3.1-1) experimental; urgency=low
 
   * Merging upstream version 2.3.1.
   * Removing logging.patch, went upstream.
 
- -- Daniel Baumann <daniel@debian.org>  Wed, 01 Sep 2010 14:29:49 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 01 Sep 2010 14:29:49 +0200
 
 vsftpd (2.3.0-1) unstable; urgency=low
 
   * Merging upstream version 2.3.0.
   * Updating standards version to 3.9.1.
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 14 Aug 2010 14:09:51 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 14 Aug 2010 14:09:51 +0200
 
 vsftpd (2.3.0~pre2-4) unstable; urgency=low
 
@@ -38,7 +153,7 @@ vsftpd (2.3.0~pre2-4) unstable; urgency=low
   * Added updated 10-logging.patch from Jean-Louis Dupond <jean-
     louis@dupond.be> to close #579684 also for simultaneous connections.
 
- -- Daniel Baumann <daniel@debian.org>  Tue, 06 Jul 2010 00:08:41 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 06 Jul 2010 00:08:41 +0200
 
 vsftpd (2.3.0~pre2-3) unstable; urgency=low
 
@@ -47,13 +162,13 @@ vsftpd (2.3.0~pre2-3) unstable; urgency=low
   * Updating lsb headers in init script (Closes: #579061).
   * Updating year in copyright file.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 02 May 2010 18:29:18 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 02 May 2010 18:29:18 +0200
 
 vsftpd (2.3.0~pre2-2) unstable; urgency=low
 
   * Adding patch to fix manpage formatings.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 08 Apr 2010 07:19:35 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 08 Apr 2010 07:19:35 +0200
 
 vsftpd (2.3.0~pre2-1) unstable; urgency=low
 
@@ -61,18 +176,18 @@ vsftpd (2.3.0~pre2-1) unstable; urgency=low
     successful (Closes: #575356).
   * Merging upstream version 2.3.0~pre2.
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 27 Mar 2010 09:59:03 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 27 Mar 2010 09:59:03 +0100
 
 vsftpd (2.3.0~pre1-1) unstable; urgency=low
 
   * Merging upstream version 2.3.0~pre1.
   * Updating README.source.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 19 Mar 2010 08:57:55 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 19 Mar 2010 08:57:55 +0100
 
 vsftpd (2.2.2-4) unstable; urgency=low
 
-  * Adding explicit debian source version 1.0 until switch to 3.0.
+  * Adding explicit source version 1.0 until switch to 3.0.
   * Updating year in copyright file.
   * Updating to standards 3.8.4.
   * Adding patch from Chuck Short <zulcss@ubuntu.com> to add utf8
@@ -81,13 +196,13 @@ vsftpd (2.2.2-4) unstable; urgency=low
   * Creating group for vsftpd user in case the specified user exists,
     but not its group (Closes: #572345).
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 14 Mar 2010 15:59:30 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 14 Mar 2010 15:59:30 +0100
 
 vsftpd (2.2.2-3) unstable; urgency=low
 
   * Moving chroot creation out of the start sequence (Closes: #472329).
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 04 Dec 2009 08:37:13 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 04 Dec 2009 08:37:13 +0100
 
 vsftpd (2.2.2-2) unstable; urgency=low
 
@@ -97,7 +212,7 @@ vsftpd (2.2.2-2) unstable; urgency=low
     (Closes: #557153).
   * Renumbering patches.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 22 Nov 2009 17:32:24 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 22 Nov 2009 17:32:24 +0100
 
 vsftpd (2.2.2-1) unstable; urgency=low
 
@@ -105,7 +220,7 @@ vsftpd (2.2.2-1) unstable; urgency=low
     #556260).
   * Merging upstream version 2.2.2.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 19 Nov 2009 21:44:28 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 19 Nov 2009 21:44:28 +0100
 
 vsftpd (2.2.2~pre1-1) unstable; urgency=low
 
@@ -114,7 +229,7 @@ vsftpd (2.2.2~pre1-1) unstable; urgency=low
   * Cleaning up init script (intentations, variables, bashisms, etc.).
   * Merging upstream version 2.2.2~pre1.
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 14 Nov 2009 18:21:08 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 14 Nov 2009 18:21:08 +0100
 
 vsftpd (2.2.1-1) unstable; urgency=low
 
@@ -128,7 +243,7 @@ vsftpd (2.2.1-1) unstable; urgency=low
   * Replacing unused-libs.patch with much simpler libs.patch.
   * Rediffing config.patch.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 06 Nov 2009 13:40:19 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 06 Nov 2009 13:40:19 +0100
 
 vsftpd (2.2.0-4) unstable; urgency=low
 
@@ -145,7 +260,7 @@ vsftpd (2.2.0-4) unstable; urgency=low
   * Cosmetically improve the init script wrt/ output messages (Closes:
     #403344).
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 18 Oct 2009 12:13:02 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 18 Oct 2009 12:13:02 +0200
 
 vsftpd (2.2.0-3) unstable; urgency=low
 
@@ -156,7 +271,7 @@ vsftpd (2.2.0-3) unstable; urgency=low
   * Adding README.source.
   * Adding maintainer homepage to copyright.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 04 Oct 2009 10:26:18 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 04 Oct 2009 10:26:18 +0200
 
 vsftpd (2.2.0-2) unstable; urgency=low
 
@@ -167,7 +282,7 @@ vsftpd (2.2.0-2) unstable; urgency=low
   * Removing debconf-updatepo call in clean target of rules.
   * Minimizing rules file.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 20 Sep 2009 18:33:01 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 20 Sep 2009 18:33:01 +0200
 
 vsftpd (2.2.0-1) unstable; urgency=low
 
@@ -178,23 +293,23 @@ vsftpd (2.2.0-1) unstable; urgency=low
   * Merging upstream version 2.2.0:
     - Should fix FTBFS on alpha (Closes: #540860).
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 13 Aug 2009 23:47:26 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 13 Aug 2009 23:47:26 +0200
 
 vsftpd (2.2.0~pre4-2) unstable; urgency=low
 
   * Updating depends in update target of rules.
   * Updating default home directory to be removed in postrm script.
   * Correcting typo of hardcoding daemon username.
-  * Renaming directory for storing local debian additions in the debian
+  * Renaming directory for storing local additions in the packaging
     directory to a more common name.
 
- -- Daniel Baumann <daniel@debian.org>  Mon, 20 Jul 2009 01:32:58 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 20 Jul 2009 01:32:58 +0200
 
 vsftpd (2.2.0~pre4-1) unstable; urgency=low
 
   * Merging upstream version 2.2.0~pre4.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 19 Jul 2009 21:43:34 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 19 Jul 2009 21:43:34 +0200
 
 vsftpd (2.2.0~pre3-1) unstable; urgency=low
 
@@ -203,13 +318,13 @@ vsftpd (2.2.0~pre3-1) unstable; urgency=low
   * Moving preseed example from docs to examples.
   * Making 'set -e' global in rules file.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 19 Jul 2009 21:38:10 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 19 Jul 2009 21:38:10 +0200
 
 vsftpd (2.2.0~pre2-1) unstable; urgency=low
 
   * Merging upstream version 2.2.0~pre2.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 17 Jul 2009 14:19:20 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 17 Jul 2009 14:19:20 +0200
 
 vsftpd (2.2.0~pre1-1) unstable; urgency=low
 
@@ -220,7 +335,7 @@ vsftpd (2.2.0~pre1-1) unstable; urgency=low
   * Adding Czech debconf translation from Vitezslav Kotrla
     <vitezslav.kotrla@gmail.com> (Closes: #534129).
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 10 Jul 2009 14:40:37 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 10 Jul 2009 14:40:37 +0200
 
 vsftpd (2.1.2-1) unstable; urgency=low
 
@@ -232,7 +347,7 @@ vsftpd (2.1.2-1) unstable; urgency=low
   * Applying patch from Peter Eisentraut <petere@debian.org> to add
     status support to init script (Closes: #527881).
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 30 May 2009 10:16:14 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 30 May 2009 10:16:14 +0200
 
 vsftpd (2.1.1~pre1-2) unstable; urgency=medium
 
@@ -240,7 +355,7 @@ vsftpd (2.1.1~pre1-2) unstable; urgency=medium
     (Closes: #524251).
   * Adding patch to not hardcode libcap soname (Closes: #526792).
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 03 May 2009 17:49:00 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 03 May 2009 17:49:00 +0200
 
 vsftpd (2.1.1~pre1-1) unstable; urgency=low
 
@@ -264,7 +379,7 @@ vsftpd (2.1.1~pre1-1) unstable; urgency=low
   * Adding Galizian debconf translations from Marce Villarino
     <mvillarino@gmail.com> (Closes: #524251).
 
- -- Daniel Baumann <daniel@debian.org>  Mon, 20 Apr 2009 08:53:00 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 20 Apr 2009 08:53:00 +0200
 
 vsftpd (2.1.0-2) unstable; urgency=medium
 
@@ -277,7 +392,7 @@ vsftpd (2.1.0-2) unstable; urgency=medium
   * Adding Italian debconf translations from Vincenzo Campanella
     <vinz65@gmail.com> (Closes: #522603).
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 05 Apr 2009 10:49:00 +0200
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 05 Apr 2009 10:49:00 +0200
 
 vsftpd (2.1.0-1) unstable; urgency=low
 
@@ -287,7 +402,7 @@ vsftpd (2.1.0-1) unstable; urgency=low
   * Removing defs.patch, went upstream.
   * Renumbering db-doc.patch.
 
- -- Daniel Baumann <daniel@debian.org>  Tue, 24 Mar 2009 06:57:00 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 24 Mar 2009 06:57:00 +0100
 
 vsftpd (2.0.7-4) unstable; urgency=low
 
@@ -306,14 +421,14 @@ vsftpd (2.0.7-4) unstable; urgency=low
     package description (Closes: #520592).
   * Using consistent copyright notice in debconf translation files.
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 21 Mar 2009 08:19:07 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 21 Mar 2009 08:19:07 +0100
 
 vsftpd (2.0.7-3) unstable; urgency=low
 
   * Correcting typo in install call of postinst script (Closes: #514954).
   * Adding debconf support for username and directory (Closes: #515853).
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 19 Feb 2009 11:39:00 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 19 Feb 2009 11:39:00 +0100
 
 vsftpd (2.0.7-2) unstable; urgency=low
 
@@ -329,7 +444,7 @@ vsftpd (2.0.7-2) unstable; urgency=low
   * Rediffing builddefs.patch.
   * Rediffing config.patch.
   * Rediffing wifexited-const.patch.
-  * Moving ftpusers to sub-directory in debian.
+  * Moving ftpusers to sub-directory.
   * Prefixing debhelper files with package name.
   * Rewriting copyright file in machine-interpretable format.
   * Reordering debhelper dirs file.
@@ -356,7 +471,7 @@ vsftpd (2.0.7-2) unstable; urgency=low
   * Rewriting and simplyfing postinst script.
   * Rewriting and simplyfing postrm script.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 05 Feb 2009 16:41:00 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 05 Feb 2009 16:41:00 +0100
 
 vsftpd (2.0.7-1) unstable; urgency=medium
 
@@ -369,7 +484,7 @@ vsftpd (2.0.7-1) unstable; urgency=medium
   * Adding vcs fields in control file.
   * Removed useless empty line at the end of vsftpd.pam file.
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 31 Jan 2009 00:47:00 +0100
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 31 Jan 2009 00:47:00 +0100
 
 vsftpd (2.0.6-1.2) unstable; urgency=low
 

@@ -2,8 +2,8 @@ Author: Philipp Kern <pkern@debian.org>
 Description: Fix vsftpd on s390 (Closes: #602726).
 
 diff -Naurp vsftpd.orig/sysdeputil.c vsftpd/sysdeputil.c
---- vsftpd.orig/sysdeputil.c	2010-03-26 04:25:33.000000000 +0100
-+++ vsftpd/sysdeputil.c	2010-11-09 00:56:57.759463692 +0100
+--- vsftpd.orig/sysdeputil.c	2011-09-05 16:03:18.728857644 +0200
++++ vsftpd/sysdeputil.c	2011-09-05 16:05:12.909423834 +0200
 @@ -64,7 +64,7 @@
  #include <utmpx.h>
  

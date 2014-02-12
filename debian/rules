@@ -1,21 +1,25 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
 DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 
-ifneq ($(DEB_HOST_ARCH_OS),kfreebsd)
-	LIBS = -lwrap -lpam -lcap -lssl -lcrypto
-else
-	LIBS = -lwrap -lpam -lssl -lcrypto
+LIBS = -lwrap -lpam -lssl -lcrypto
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+	LIBS += -lcap
 endif
 
 %:
-	dh ${@} --with quilt
+	dh ${@}
 
 override_dh_auto_build:
-	$(MAKE) CFLAGS="$(CFLAGS) -W -Wshadow" LIBS="$(LIBS)" LINK=""
+	$(MAKE) CFLAGS="$(CFLAGS) $(CPPFLAGS)" LIBS="$(LIBS)" LINK=""
 
 override_dh_auto_install:
 	# disabled
 
 override_dh_installinit:
 	dh_installinit --update-rcd-params='start 20 2 3 4 5 . stop 80 1 .'
+
+override_dh_builddeb:
+	dh_builddeb -- -Zgzip -z9

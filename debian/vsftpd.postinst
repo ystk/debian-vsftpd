@@ -16,10 +16,10 @@ case "${1}" in
 
 		db_stop
 
-		if ! getent passwd | grep -q "^${_USERNAME}"
+		if ! getent passwd "${_USERNAME}" > /dev/null 2>&1
 		then
 			adduser --system --home ${_DIRECTORY} --no-create-home --quiet --gecos 'ftp daemon' --group ${_USERNAME}
-		elif ! getent group | grep -q "^${_USERNAME}"
+		elif ! getent group "${_USERNAME}" > /dev/null 2>&1
 		then
 			addgroup --system --quiet ${_USERNAME}
 			gpasswd -a ${_USERNAME} ${_USERNAME}

@@ -1,16 +1,12 @@
 Source: vsftpd
 Section: net
 Priority: extra
-Maintainer: Daniel Baumann <daniel@lists.debian-maintainers.org>
-Uploaders: Daniel Baumann <daniel@debian.org>
+Maintainer: Daniel Baumann <daniel.baumann@progress-technologies.net>
 Build-Depends:
- debhelper (>= 7.0.50~),
- libcap2-dev [!kfreebsd-amd64 !kfreebsd-i386 !hurd-i386], libpam0g-dev,
- libssl-dev, libwrap0-dev, quilt (>= 0.46-7)
-Standards-Version: 3.9.1
+ debhelper (>= 9), libcap2-dev [linux-any], libpam0g-dev, libssl-dev,
+ libwrap0-dev
+Standards-Version: 3.9.3
 Homepage: http://vsftpd.beasts.org/
-Vcs-Browser: http://git.debian-maintainers.org/?p=daniel/vsftpd.git
-Vcs-Git: git://git.debian-maintainers.org/git/daniel/vsftpd.git
 
 Package: vsftpd
 Architecture: any

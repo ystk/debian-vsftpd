@@ -1,5 +1,5 @@
-Notes on the Debian vsftpd package
-==================================
+Notes on the vsftpd package
+===========================
 
 If you want to allow local users to log in via FTP (not a good option
 on any public network, since FTP relies upon cleartext passwords), you
@@ -42,7 +42,7 @@ README.ssl.  Be sure to read this file before enabling SSL!
 
 To use SSL you will need a certificate.  You may wish to get a certificate
 from a certificate agency; if you only need a self-signed certificate, you
-can use the "make-ssl-cert" script from the Debian "ssl-cert" package to
+can use the "make-ssl-cert" script from the "ssl-cert" package to
 create one, or you can create one manually using the "openssl" command.
 The default location for the certificate is /etc/ssl/private/vsftpd.pem;
 set "rsa_cert_file" in /etc/vsftpd.conf to look elsewhere.

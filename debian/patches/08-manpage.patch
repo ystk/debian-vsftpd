@@ -1,4 +1,4 @@
-Author: Daniel Baumann <daniel@debian.org>
+Author: Daniel Baumann <daniel.baumann@progress-technologies.net>
 Description: Fixing manpage formating.
 
 diff -Naurp vsftpd.orig/vsftpd.8 vsftpd/vsftpd.8
