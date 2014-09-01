@@ -2,8 +2,8 @@ Author: Martin Nagy <mnagy@redhat.com>
 Description: Fix file listing issue with wildcard (Bugzilla: #392181).
 
 diff -Naurp vsftpd.orig/ls.c vsftpd/ls.c
---- vsftpd.orig/ls.c	2009-10-02 14:15:18.000000000 +0200
-+++ vsftpd/ls.c	2009-10-18 11:48:29.000000000 +0200
+--- vsftpd.orig/ls.c
++++ vsftpd/ls.c
 @@ -281,6 +281,25 @@ vsf_filename_passes_filter(const struct 
        {
          goto out;

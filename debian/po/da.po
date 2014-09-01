@@ -1,5 +1,5 @@
 # Danish translation of vsftpd debconf templates.
-# 2010 Joe Hansen <joedalton2@yahoo.dk>
+# Copyright (C) 2010 Joe Hansen <joedalton2@yahoo.dk>
 # This file is distributed under the same license as the vsftpd package.
 #
 msgid ""

@@ -16,8 +16,8 @@ Description:
  This patch fixes it.
 
 diff -Naurp vsftpd.orig/standalone.c vsftpd/standalone.c
---- vsftpd.orig/standalone.c	2009-10-02 14:15:18.000000000 +0200
-+++ vsftpd/standalone.c	2009-10-17 17:10:02.000000000 +0200
+--- vsftpd.orig/standalone.c
++++ vsftpd/standalone.c
 @@ -7,6 +7,8 @@
   * Code to listen on the network and launch children servants.
   */
@@ -54,8 +54,8 @@ diff -Naurp vsftpd.orig/standalone.c vsftpd/standalone.c
      retval = vsf_sysutil_bind(listen_sock, p_sockaddr);
      vsf_sysutil_free(p_sockaddr);
 diff -Naurp vsftpd.orig/sysutil.c vsftpd/sysutil.c
---- vsftpd.orig/sysutil.c	2009-10-02 14:15:18.000000000 +0200
-+++ vsftpd/sysutil.c	2009-10-17 17:10:02.000000000 +0200
+--- vsftpd.orig/sysutil.c
++++ vsftpd/sysutil.c
 @@ -2039,6 +2039,19 @@ vsf_sysutil_sockaddr_set_ipv6addr(struct
    }
  }
@@ -77,8 +77,8 @@ diff -Naurp vsftpd.orig/sysutil.c vsftpd/sysutil.c
  vsf_sysutil_sockaddr_ipv6_v4(const struct vsf_sysutil_sockaddr* p_addr)
  {
 diff -Naurp vsftpd.orig/sysutil.h vsftpd/sysutil.h
---- vsftpd.orig/sysutil.h	2009-10-02 14:15:18.000000000 +0200
-+++ vsftpd/sysutil.h	2009-10-17 17:10:02.000000000 +0200
+--- vsftpd.orig/sysutil.h
++++ vsftpd/sysutil.h
 @@ -228,6 +228,9 @@ void vsf_sysutil_sockaddr_set_ipv4addr(s
                                         const unsigned char* p_raw);
  void vsf_sysutil_sockaddr_set_ipv6addr(struct vsf_sysutil_sockaddr* p_sockptr,

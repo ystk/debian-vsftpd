@@ -2,11 +2,13 @@
 
 ### BEGIN INIT INFO
 # Provides:		vsftpd
-# Required-Start:	$remote_fs $syslog
-# Required-Stop:	$remote_fs $syslog
+# Required-Start:	$network $remote_fs $syslog
+# Required-Stop:	$network $remote_fs $syslog
 # Default-Start:	2 3 4 5
 # Default-Stop:		1
 # Short-Description:	Very secure FTP server
+# Description:		Provides a lightweight, efficient FTP server written
+#			for security.
 ### END INIT INFO
 
 set -e
@@ -18,6 +20,8 @@ LOGFILE="/var/log/vsftpd.log"
 CHROOT="/var/run/vsftpd/empty"
 
 test -x "${DAEMON}" || exit 0
+
+. /lib/lsb/init-functions
 
 if [ ! -e "${LOGFILE}" ]
 then
@@ -31,84 +35,57 @@ then
 	mkdir -p "${CHROOT}"
 fi
 
-Check_standalone_mode ()
-{
-	# Return 1 if vsftpd.conf doesn't have listen=yes or listen_ipv6=yes
-	# (mandatory for standalone operation).
-
-	CONFFILE="/etc/vsftpd.conf"
-
-	if [ -e "${CONFFILE}" ] && ! egrep -iq "^ *listen(_ipv6)? *= *yes" "${CONFFILE}"
-	then
-		echo "${CONFFILE}: listen disabled - service will not start"
-		return 1
-	fi
-}
-
 case "${1}" in
 	start)
-		Check_standalone_mode || exit 0
-		echo -n "Starting FTP server: "
+		log_daemon_msg "Starting FTP server" "${NAME}"
+
+		if [ -e /etc/vsftpd.conf ] && ! egrep -iq "^ *listen(_ipv6)? *= *yes" /etc/vsftpd.conf
+		then
+			log_warning_msg "vsftpd disabled - listen disabled in config."
+			exit 0
+		fi
 
 		start-stop-daemon --start --background -m --oknodo --pidfile /var/run/vsftpd/vsftpd.pid --exec ${DAEMON}
 
-		echo "${NAME}."
+		_PID="$(if [ -e /var/run/vsftpd/vsftpd.pid ]; then cat /var/run/vsftpd/vsftpd.pid; fi)"
+
+		if ! ps -C vsftpd | grep -qs "${_PID}"
+		then
+			log_warning_msg "vsftpd failed - probably invalid config."
+			exit 1
+		fi
+
+		log_end_msg 0
 		;;
 
 	stop)
-		echo -n "Stopping FTP server: "
+		log_daemon_msg "Stopping FTP server" "${NAME}"
 
 		start-stop-daemon --stop --pidfile /var/run/vsftpd/vsftpd.pid --oknodo --exec ${DAEMON}
 		rm -f /var/run/vsftpd/vsftpd.pid
 
-		echo "${NAME}."
-
+		log_end_msg 0
 		;;
 
 	restart)
-		echo -n "Stopping FTP server: "
-
-		start-stop-daemon --stop --pidfile /var/run/vsftpd/vsftpd.pid --oknodo --exec ${DAEMON}
-		rm -f /var/run/vsftpd/vsftpd.pid
-
-		echo "${NAME}."
-		Check_standalone_mode || exit 0
-		echo -n "Starting FTP server: "
-
-		start-stop-daemon --start --background -m --pidfile /var/run/vsftpd/vsftpd.pid --exec ${DAEMON}
-
-		echo "${NAME}."
+		${0} stop
+		${0} start
 		;;
 
 	reload|force-reload)
-		echo "Reloading FTP server configuration: "
+		log_daemon_msg "Reloading FTP server configuration"
 
 		start-stop-daemon --stop --pidfile /var/run/vsftpd/vsftpd.pid --signal 1 --exec $DAEMON
 
-		echo "${NAME}."
+		log_end_msg "${?}"
 		;;
 
 	status)
-		PID="$(cat /var/run/vsftpd/vsftpd.pid 2>/dev/null)" || true
-
-		if [ ! -f /var/run/vsftpd/vsftpd.pid ] || [ -z "${PID}" ]
-		then
-			echo "${NAME} is not running"
-			exit 3
-		fi
-
-		if ps "${PID}" >/dev/null 2>&1
-		then
-			echo "${NAME} is running"
-			exit 0
-		else
-			echo "${NAME} is not running"
-			exit 1
-		fi
+		status_of_proc "${DAEMON}" "FTP server"
 		;;
 
 	*)
-		echo "Usage: /etc/init.d/${NAME} {start|stop|restart|reload|status}"
+		echo "Usage: ${0} {start|stop|restart|reload|status}"
 		exit 1
 		;;
 esac

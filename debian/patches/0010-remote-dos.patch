@@ -2,8 +2,8 @@ Author: Ben Hutchings <ben@decadent.org.uk>
 Description: Remote DoS on Linux 2.6.32 (Closes: #629373).
 
 diff -Naurp vsftpd.orig/sysdeputil.c vsftpd/sysdeputil.c
---- vsftpd.orig/sysdeputil.c	2010-03-26 04:25:33.000000000 +0100
-+++ vsftpd/sysdeputil.c	2011-09-05 15:16:05.347070790 +0200
+--- vsftpd.orig/sysdeputil.c
++++ vsftpd/sysdeputil.c
 @@ -25,6 +25,11 @@
    #define _LARGEFILE64_SOURCE 1
  #endif

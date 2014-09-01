@@ -1,9 +1,14 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: vsftpd
+Upstream-Contact: Chris Evans <scarybeasts@gmail.com>
+Source: http://security.appspot.com/downloads/
+
 Files: *
-Copyright: (C) 2001-2012 Chris Evans <scarybeasts@gmail.com>
+Copyright: 2001-2012 Chris Evans <scarybeasts@gmail.com>
 License: GPL-2 with SSL exception
 
 Files: debian/*
-Copyright: (C) 2009-2012 Daniel Baumann <daniel.baumann@progress-technologies.net>
+Copyright: 2009-2014 Daniel Baumann <mail@daniel-baumann.ch>
 License: GPL-2 with SSL exception
 
 License: GPL-2 with SSL exception

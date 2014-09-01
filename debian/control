@@ -1,17 +1,30 @@
 Source: vsftpd
 Section: net
 Priority: extra
-Maintainer: Daniel Baumann <daniel.baumann@progress-technologies.net>
+Maintainer: Daniel Baumann <mail@daniel-baumann.ch>
 Build-Depends:
- debhelper (>= 9), libcap2-dev [linux-any], libpam0g-dev, libssl-dev,
- libwrap0-dev
-Standards-Version: 3.9.3
+ debhelper (>= 9),
+ dh-systemd,
+ libcap2-dev [linux-any],
+ libpam0g-dev,
+ libssl-dev,
+ libwrap0-dev,
+Standards-Version: 3.9.5
 Homepage: http://vsftpd.beasts.org/
+Vcs-Browser: http://daniel-baumann.ch/gitweb/?p=debian/packages/vsftpd.git
+Vcs-Git: git://daniel-baumann.ch/git/debian/packages/vsftpd.git
 
 Package: vsftpd
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, libpam-modules, netbase
-Recommends: logrotate
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+ adduser,
+ libpam-modules,
+ netbase,
+Recommends:
+ logrotate,
+ ssl-cert,
 Conflicts: ftp-server
 Replaces: ftp-server
 Provides: ftp-server
@@ -21,3 +34,16 @@ Description: lightweight, efficient FTP server written for security
  .
  It supports both anonymous and non-anonymous FTP access, PAM authentication,
  bandwidth limiting, and the Linux sendfile() facility.
+
+Package: vsftpd-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends:
+ ${misc:Depends},
+ vsftpd (= ${binary:Version})
+Description: lightweight, efficient FTP server written for security (debug)
+ This package provides the "Very Secure FTP Daemon", written from
+ the ground up with security in mind.
+ .
+ This package contains the debugging symbols.

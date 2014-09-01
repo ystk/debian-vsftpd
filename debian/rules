@@ -10,16 +10,19 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
 endif
 
 %:
-	dh ${@}
+	dh ${@} --parallel --with=systemd
 
 override_dh_auto_build:
 	$(MAKE) CFLAGS="$(CFLAGS) $(CPPFLAGS)" LIBS="$(LIBS)" LINK=""
 
 override_dh_auto_install:
-	# disabled
-
-override_dh_installinit:
-	dh_installinit --update-rcd-params='start 20 2 3 4 5 . stop 80 1 .'
+	# auto-install disabled
 
 override_dh_builddeb:
-	dh_builddeb -- -Zgzip -z9
+	dh_builddeb -- -Zxz
+
+override_dh_installinit:
+	dh_installinit --update-rcd-params='start . 2 3 4 5 . stop . 1 .'
+
+override_dh_strip:
+	dh_strip --dbg-package=vsftpd-dbg

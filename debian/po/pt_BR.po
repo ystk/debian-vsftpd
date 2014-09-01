@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of vsftpd debconf templates.
-# 2010 Chanely Marques <chanelym@gmail.com>
+# Copyright (C) 2010 Chanely Marques <chanelym@gmail.com>
 # This file is distributed under the same license as the vsftpd package.
 #
 msgid ""

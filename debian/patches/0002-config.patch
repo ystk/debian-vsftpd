@@ -2,8 +2,8 @@ Author: Daniel Jacobowitz <dan@debian.org>
 Description: Set default configuration.
 
 diff -Naurp vsftpd.orig/tunables.c vsftpd/tunables.c
---- vsftpd.orig/tunables.c	2009-07-15 22:08:27.000000000 +0200
-+++ vsftpd/tunables.c	2009-11-06 13:33:34.000000000 +0100
+--- vsftpd.orig/tunables.c
++++ vsftpd/tunables.c
 @@ -246,7 +246,7 @@ tunables_load_defaults()
    /* -rw------- */
    tunable_chown_upload_mode = 0600;
@@ -23,8 +23,8 @@ diff -Naurp vsftpd.orig/tunables.c vsftpd/tunables.c
    install_str_setting("/etc/vsftpd.user_list", &tunable_userlist_file);
    install_str_setting(0, &tunable_anon_root);
 diff -Naurp vsftpd.orig/vsftpd.conf vsftpd/vsftpd.conf
---- vsftpd.orig/vsftpd.conf	2009-11-06 08:41:11.000000000 +0100
-+++ vsftpd/vsftpd.conf	2009-11-06 13:35:37.000000000 +0100
+--- vsftpd.orig/vsftpd.conf
++++ vsftpd/vsftpd.conf
 @@ -8,6 +8,17 @@
  # Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's
  # capabilities.
@@ -98,8 +98,8 @@ diff -Naurp vsftpd.orig/vsftpd.conf vsftpd/vsftpd.conf
 +# encrypted connections.
 +rsa_cert_file=/etc/ssl/private/vsftpd.pem
 diff -Naurp vsftpd.orig/vsftpd.conf.5 vsftpd/vsftpd.conf.5
---- vsftpd.orig/vsftpd.conf.5	2009-11-06 08:41:11.000000000 +0100
-+++ vsftpd/vsftpd.conf.5	2009-11-06 13:37:10.000000000 +0100
+--- vsftpd.orig/vsftpd.conf.5
++++ vsftpd/vsftpd.conf.5
 @@ -940,7 +940,7 @@ Default: nobody
  .B pam_service_name
  This string is the name of the PAM service vsftpd will use.

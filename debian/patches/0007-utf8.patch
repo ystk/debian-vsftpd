@@ -2,8 +2,8 @@ Author: Chuck Short <zulcss@ubuntu.com>
 Description: Adding support for UTF8.
 
 diff -Naurp vsftpd.orig/features.c vsftpd/features.c
---- vsftpd.orig/features.c	2012-01-08 10:37:30.972389357 +0100
-+++ vsftpd/features.c	2012-01-08 10:47:54.099469610 +0100
+--- vsftpd.orig/features.c
++++ vsftpd/features.c
 @@ -27,6 +27,10 @@ handle_feat(struct vsf_session* p_sess)
        vsf_cmdio_write_raw(p_sess, " AUTH TLS\r\n");
      }
@@ -16,8 +16,8 @@ diff -Naurp vsftpd.orig/features.c vsftpd/features.c
    {
      vsf_cmdio_write_raw(p_sess, " EPRT\r\n");
 diff -Naurp vsftpd.orig/parseconf.c vsftpd/parseconf.c
---- vsftpd.orig/parseconf.c	2012-01-08 10:47:36.055378015 +0100
-+++ vsftpd/parseconf.c	2012-01-08 10:47:54.099469610 +0100
+--- vsftpd.orig/parseconf.c
++++ vsftpd/parseconf.c
 @@ -28,6 +28,7 @@ static struct parseconf_bool_setting
  parseconf_bool_array[] =
  {
@@ -27,8 +27,8 @@ diff -Naurp vsftpd.orig/parseconf.c vsftpd/parseconf.c
    { "pasv_enable", &tunable_pasv_enable },
    { "port_enable", &tunable_port_enable },
 diff -Naurp vsftpd.orig/tunables.c vsftpd/tunables.c
---- vsftpd.orig/tunables.c	2012-01-08 10:47:36.043377441 +0100
-+++ vsftpd/tunables.c	2012-01-08 10:47:54.103469396 +0100
+--- vsftpd.orig/tunables.c
++++ vsftpd/tunables.c
 @@ -10,6 +10,7 @@
  
  int tunable_anonymous_enable;
@@ -46,8 +46,8 @@ diff -Naurp vsftpd.orig/tunables.c vsftpd/tunables.c
    tunable_port_enable = 1;
    tunable_chroot_local_user = 0;
 diff -Naurp vsftpd.orig/tunables.h vsftpd/tunables.h
---- vsftpd.orig/tunables.h	2010-03-17 03:43:01.000000000 +0100
-+++ vsftpd/tunables.h	2012-01-08 10:47:54.103469396 +0100
+--- vsftpd.orig/tunables.h
++++ vsftpd/tunables.h
 @@ -11,6 +11,7 @@ void tunables_load_defaults();
  /* Booleans */
  extern int tunable_anonymous_enable;          /* Allow anon logins */

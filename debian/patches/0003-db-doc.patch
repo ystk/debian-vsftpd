@@ -3,8 +3,8 @@ Description:
  A short explanation how to find out the right db version (Closes: #478282).
 
 diff -Naurp vsftpd.orig/EXAMPLE/VIRTUAL_USERS/README vsftpd/EXAMPLE/VIRTUAL_USERS/README
---- vsftpd.orig/EXAMPLE/VIRTUAL_USERS/README	2009-01-31 00:02:36.000000000 +0000
-+++ vsftpd/EXAMPLE/VIRTUAL_USERS/README	2009-01-31 01:38:11.000000000 +0000
+--- vsftpd.orig/EXAMPLE/VIRTUAL_USERS/README
++++ vsftpd/EXAMPLE/VIRTUAL_USERS/README
 @@ -21,7 +21,10 @@ NOTE: Many systems have multiple version
  need to use e.g. db3_load for correct operation. This is known to affect
  some Debian systems. The core issue is that pam_userdb expects its login

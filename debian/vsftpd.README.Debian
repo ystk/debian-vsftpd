@@ -67,3 +67,12 @@ from vsftpd.conf.
 
 For more information on configuring vsftpd, see the vsftpd.conf(5) manual
 page, and the included FAQ.
+
+
+If vsftpd is used within a Linux Container (LXC) or with NIS logins, make sure
+you use:
+
+  isolate=NO
+  isolate_network=NO
+
+in /etc/vsftpd.conf.

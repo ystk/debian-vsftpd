@@ -2,8 +2,8 @@ Author: Michael Cree <mcree@orcon.net.nz>
 Description: Fixing FTBFS on alpha (Closes: #656182).
 
 diff -Naurp vsftpd.orig/sysdeputil.c vsftpd/sysdeputil.c
---- vsftpd.orig/sysdeputil.c	2010-03-26 04:25:33.000000000 +0100
-+++ vsftpd/sysdeputil.c	2012-01-21 10:53:37.353802546 +0100
+--- vsftpd.orig/sysdeputil.c
++++ vsftpd/sysdeputil.c
 @@ -81,6 +81,9 @@
    #include <linux/unistd.h>
    #include <errno.h>
