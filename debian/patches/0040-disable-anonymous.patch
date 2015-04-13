@@ -1,0 +1,62 @@
+Description: disable anonymous login
+Origin: http://bazaar.launchpad.net/~ubuntu-branches/ubuntu/utopic/vsftpd/utopic/view/head:/debian/patches/ubuntu-disable-anonymous.patch
+Forwarded: not-needed
+Last-Update: 2014-10-05
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: trunk/vsftpd.conf
+===================================================================
+--- trunk.orig/vsftpd.conf	2014-10-06 10:36:01.173748064 +0200
++++ trunk/vsftpd.conf	2014-10-06 10:36:01.169748000 +0200
+@@ -21,11 +21,11 @@
+ # files.
+ listen_ipv6=YES
+ #
+-# Allow anonymous FTP? (Beware - allowed by default if you comment this out).
+-anonymous_enable=YES
++# Allow anonymous FTP? (Disabled by default).
++anonymous_enable=NO
+ #
+ # Uncomment this to allow local users to log in.
+-#local_enable=YES
++local_enable=YES
+ #
+ # Uncomment this to enable any form of FTP write command.
+ #write_enable=YES
+Index: trunk/vsftpd.conf.5
+===================================================================
+--- trunk.orig/vsftpd.conf.5	2014-10-06 10:36:01.173748064 +0200
++++ trunk/vsftpd.conf.5	2014-10-06 10:36:01.169748000 +0200
+@@ -84,7 +84,7 @@
+ .BR anonymous
+ are recognised as anonymous logins.
+ 
+-Default: YES
++Default: NO
+ .TP
+ .B ascii_download_enable
+ When enabled, ASCII mode data transfers will be honoured on downloads.
+Index: trunk/EXAMPLE/INTERNET_SITE/vsftpd.conf
+===================================================================
+--- trunk.orig/EXAMPLE/INTERNET_SITE/vsftpd.conf	2008-02-02 02:30:40.000000000 +0100
++++ trunk/EXAMPLE/INTERNET_SITE/vsftpd.conf	2014-10-06 10:37:37.915297665 +0200
+@@ -1,5 +1,5 @@
+ # Access rights
+-anonymous_enable=YES
++anonymous_enable=NO
+ local_enable=NO
+ write_enable=NO
+ anon_upload_enable=NO
+Index: trunk/EXAMPLE/INTERNET_SITE_NOINETD/vsftpd.conf
+===================================================================
+--- trunk.orig/EXAMPLE/INTERNET_SITE_NOINETD/vsftpd.conf	2008-02-02 02:30:40.000000000 +0100
++++ trunk/EXAMPLE/INTERNET_SITE_NOINETD/vsftpd.conf	2014-10-06 10:38:47.516421567 +0200
+@@ -3,7 +3,7 @@
+ max_clients=200
+ max_per_ip=4
+ # Access rights
+-anonymous_enable=YES
++anonymous_enable=NO
+ local_enable=NO
+ write_enable=NO
+ anon_upload_enable=NO

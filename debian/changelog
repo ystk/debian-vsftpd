@@ -1,3 +1,81 @@
+vsftpd (3.0.2-17) unstable; urgency=medium
+
+  * Add debian/patches/0035-address_space_limit.patch to increase the
+    address space (LP: #1348972).
+  * Add patches from Ubuntu:
+    - 0040-disable-anonymous.patch to disable anonymous login in
+      vsftpd.conf.
+      + Change also vsftpd.man.5 and confs in EXPAMPLE.
+    - 0045-seccomp-gettimeofday.patch to permit gettimeofday() in
+      seccomp sandbox.
+      Thanks to Robie Basak <robie.basak@ubuntu.com>.
+    - Delete debian/patches/0016-seccomp.patch (replace with 0045-*).
+  * Add Turkish debconf translation (Closes: #759883).
+    Thanks to Mert Dirik <mertdirik@gmail.com>.
+  * debian/control:
+    - Change at vsftpd-dbg Architecture from linux-any to any.
+    - Add Depends dialog to package vsftpd.
+  * Add debian/vsftpd.bug-script.
+  * Add debian/vsftpd.apport file from Ubuntu.
+    Thanks to Andres Rodriguez <andreserl@ubuntu.com>.
+  * debian/rules:
+    - Remove useless override_dh_installinit.
+    - Add manuelly install of the apport file because dh-apport is missing
+      in debian.
+  * debian/vsftpd.lintian-overrides:
+    - Add a comment to the override.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Tue, 07 Oct 2014 15:56:29 +0200
+
+vsftpd (3.0.2-16) unstable; urgency=medium
+
+  * New maintainer (Closes: #756094).
+  * debian/control:
+    - Set myself as maintainer.
+    - Replace vacant Vcs to alioth.
+    - Remove field "priority" in package vsftpd-dbg.
+    - Bump Standards-Version to 3.9.6 (no changes required).
+  * debian/source/options:
+    - Set compression-level to 9 to save space.
+  * debian/vsftpd.init:
+    - Add "Default-Stop" for level 0 & 6.
+  * debian/rules:
+    - At dh_installinit add Stoplevel 0 & 6.
+  * debian/vsftpd.service:
+    - Remove obsolete target "syslog.target".
+  * debian/vsftpd.lintian-overrides:
+    - Add override "binary-without-manpage" for "/usr/bin/vsftpdwho",
+      a 3 line shell script.
+  * debian/copyright:
+    - Add myself to the list of authors for debian/*.
+    - Add Daniel Jacobowitz for *.
+  * New debian/patches/0020-manpage-hyphen.patch.
+    - Escape minus in all manpages.
+  * New debian/patches/0025-unconditional_utf8_report.patch.
+    - Remove unconditional UTF-8 report, as conditional report
+      is enabled per 0007-utf8.patch (Closes: 754449).
+      Thanks to: Bartos-Elekes Zsolt <muszi@kite.hu>!
+  * New debian/patches/0030-kfreebsd.patch (Closes: #756794).
+    - Add condition for missing libcab{2}-dev on kfreebsd*.
+      Thanks to: Steven Chamberlain <steven@pyro.eu.org>!
+  * Add DEP8 tests (Closes: #746480).
+    - Thanks to: Robie Basak <robie.basak@ubuntu.com>!
+  * debian/vsftpd.init:
+    - Add while loop to prevent error on
+      slow PID file generation  (Closes: #754762).
+      Thanks to: Stephen Powell <zlinuxman@wowway.com>!
+  * New missing debian/watch.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Tue, 30 Sep 2014 07:30:37 +0200
+
+vsftpd (3.0.2-15) unstable; urgency=low
+
+  * Adding patch from Robie Basak <robie.basak@ubuntu.com> to permit
+    gettimeofday() in seccomp sandbox to fix log message generation.
+  * I don't care anymore, not worth it.. orphaning.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 25 Jul 2014 16:39:45 +0200
+
 vsftpd (3.0.2-14) unstable; urgency=low
 
   * Updating year in copyright file.

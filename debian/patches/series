@@ -1,3 +1,5 @@
+0025-unconditional_utf8_report.patch
+0020-manpage-hyphen.patch
 0001-builddefs.patch
 0002-config.patch
 0003-db-doc.patch
@@ -13,3 +15,7 @@
 0013-listen.patch
 0014-ssl-cert.patch
 0015-disable-clone-newpid.patch
+0030-kfreebsd.patch
+0035-address_space_limit.patch
+0040-disable-anonymous.patch
+0045-seccomp-gettimeofday.patch

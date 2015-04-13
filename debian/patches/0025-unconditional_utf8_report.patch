@@ -1,0 +1,18 @@
+Description: remove unconditional utf-8 report
+Author: Jörg Frings-Fürst <debian@jff-webhosting.net>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=754449
+Last-Update: 2014-08-20
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: trunk/features.c
+===================================================================
+--- trunk.orig/features.c	2014-08-20 20:07:41.000000000 +0200
++++ trunk/features.c	2014-08-20 22:19:58.968027375 +0200
+@@ -48,7 +48,6 @@
+   vsf_cmdio_write_raw(p_sess, " REST STREAM\r\n");
+   vsf_cmdio_write_raw(p_sess, " SIZE\r\n");
+   vsf_cmdio_write_raw(p_sess, " TVFS\r\n");
+-  vsf_cmdio_write_raw(p_sess, " UTF8\r\n");
+   vsf_cmdio_write(p_sess, FTP_FEAT, "End");
+ }
+ 
