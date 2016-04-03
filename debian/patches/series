@@ -19,3 +19,5 @@
 0035-address_space_limit.patch
 0040-disable-anonymous.patch
 0045-seccomp-gettimeofday.patch
+0050-CVE-2015-1419.patch
+0055-set_default_listen.patch

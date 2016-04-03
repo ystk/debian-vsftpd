@@ -1,3 +1,15 @@
+vsftpd (3.0.2-17+deb8u1) stable; urgency=medium
+
+  * Add patch debian/patches/0050-CVE-2015-1419.patch from 3.0.2-18:
+    - Fix config option "deny_file" not always being handled correctly
+      CVE-2015-1419 (Closes: #776922).
+  * Add patch debian/patches/0055-set_default_listen.patch from 3.0.2-19:
+    - Set the default value of tunable_listen to the same value of listen from
+      the man page vsftpd.conf (Closes: #783077).
+  * Add year 2015 to debian/copyright.
+
+ -- Jörg Frings-Fürst <debian@jff-webhosting.net>  Sun, 21 Feb 2016 10:56:21 +0100
+
 vsftpd (3.0.2-17) unstable; urgency=medium
 
   * Add debian/patches/0035-address_space_limit.patch to increase the
